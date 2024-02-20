@@ -69,10 +69,9 @@ public class WebSecurity {
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
         AuthenticationManagerBuilder builder = new AuthenticationManagerBuilder(objectPostProcessor);
-        authenticationFilter.setAuthenticationManager(authenticationManager(builder));
-        return authenticationFilter;
+        //        authenticationFilter.setAuthenticationManager(authenticationManager(builder));
+        return new AuthenticationFilter(authenticationManager(builder), userService, environment);
     }
 
     private AuthorizationDecision hasIpAddress(Supplier<Authentication> authentication, RequestAuthorizationContext object) {
