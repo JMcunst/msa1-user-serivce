@@ -28,7 +28,7 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurity {
-    private static final String ALLOWED_IP_ADDRESS = "192.168.0.30";
+    private static final String ALLOWED_IP_ADDRESS = "127.0.0.1";
     private static final String SUBNET = "/32";
     private static final IpAddressMatcher ALLOWED_IP_ADDRESS_MATCHER = new IpAddressMatcher(ALLOWED_IP_ADDRESS + SUBNET);
     private static final String IP_CHECK_PATH_PREFIX = "/api/temp";
@@ -36,7 +36,8 @@ public class WebSecurity {
     private static final String[] WHITE_LIST = {
             "/welcome",
             "/health-check",
-            "/users"
+            "/users",
+            "/actuator/**"
     };
 
     private final UserService userService;
